@@ -9,10 +9,5 @@ import java.util.Set;
 
 @Repository
 public interface NumbersRepository extends JpaRepository<NumbersEntity, Long> {
-    Integer countAllByIdIn(Set<Long> ids);
-
-    default boolean allExistsByIds(Set<Long> ids) {
-        Integer count = countAllByIdIn(ids);
-        return count != null && count.equals(ids.size());
-    }
+    Set<NumbersEntity> findAllByIdIn(Collection<Long> ids);
 }

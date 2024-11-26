@@ -1,0 +1,8 @@
+# curl -X POST -H "Content-Type: application/json" -d '{"num":1}' http://localhost:8080/number
+POST http://localhost:8080/number
+Content-Type: application/json
+
+{
+  "num": 2
+}
+

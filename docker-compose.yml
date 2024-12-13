@@ -16,8 +16,6 @@ services:
       timeout: 10s
       retries: 5
     restart: unless-stopped
-    networks:
-      - spring-cloud-network
 
   app:
     container_name: cloud_app
@@ -28,13 +26,9 @@ services:
       POSTGRES_USER: ${NUMBERS_DB_USER}
       POSTGRES_PASSWORD: ${NUMBERS_DB_PASSWORD}
       MAX_SERVICE_NUMBER: ${MAX_SERVICE_NUMBER}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
     env_file:
       - .env
     ports:
       - "8080:8080"
-    networks:
-      - spring-cloud-network
-
-networks:
-  spring-cloud-network:
-    driver: bridge
